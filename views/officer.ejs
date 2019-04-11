@@ -1,0 +1,263 @@
+<% include partials/officerheader.ejs %>
+<% include partials/officer_session.ejs %>
+
+  <!-- row -->
+      <% if ( typeof message != 'undefined') { %>
+
+         <script>alert('<%= message %>');</script>
+        <% } %>
+
+<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<h1 id="colorlib-logo"><a href="">BSR</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li class="colorlib-active"><a href="officer">Home</a></li>
+					<li><a href="logout">Logout</a></li>
+				
+				</ul>
+			</nav>
+            <div class="colorlib-footer">
+				<div class="colorlib-footer">
+				<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Portal is made BY Shaunak pathak and kush joshi contatct us (psshaunak1998@gmail.com)</small></p>
+				
+			</div>
+		
+				<ul>
+					
+				</ul>
+			</div>
+			</aside>
+			
+
+<div id="colorlib-main">
+
+		<div class="colorlib-contact">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+							
+							<h2 class="colorlib-heading">officer home</h2>
+						</div>
+					</div>
+					
+					</div>
+
+
+						<div class="col-lg-12">
+							<div class="row">
+								
+									<form action="addoffcolleaction" method="post">
+									
+									<div class="col-md-3">
+									 <label>User name</label></div>
+									 <div class="col-md-7">
+									 
+                                     <select  class="form-control" id="username" name="username" onchange="getlonetype(this)">
+                                        <option selected>Select</option>
+                                        <% userdata.forEach(function(user,index) { %>
+                                        <option value="<%=user.u_id %>"> BSR<%=user.u_id%></option>
+                 <% }); %>
+                                    </select>
+                                </div>
+								</div>
+								
+                                <div class="row">
+								
+                                     <div class="col-md-3">
+                                   <label>Client Name</label>
+								   </div>
+								
+								<div class="col-md-7">
+                                    <label for="category" class="form-control" id="selected_user"></label></div>
+                                 </div>
+								
+								 
+							 <div class="row">	
+                              ``<div class="col-md-3">
+                                    <label>Loan type</label></div>
+								
+									<div class="col-md-7">
+                                    <select class="form-control" id="loan_type" name="loan_type" onchange="getpayment_days(this)">
+                                       <option selected>Select</option>
+                                       
+                                    </select>
+                                </div>
+								</div>
+								
+								 <div class="row">
+								 <div class="col-md-3">
+                             
+                                    <label>Loan title</label></div>
+									
+									<div class="col-md-7">
+                                    <select class="form-control" id="loan_title" name="loan_title" onchange="moneyInfo(this)">
+                                        <option selected>Select</option>
+                                    </select>
+                                </div>
+								</div>
+								
+                                 <div class="row">
+								 <div class="col-md-3">
+                                    <label>Paid Money</label></div>
+						
+								 <div class="col-md-7">
+                                    <label id="paidMoney"></label>
+                                   
+                                
+                                     </div>
+</div>
+									 <div class="row">
+								 <div class="col-md-3">
+								 <label>Money Remain</label></div>
+								  <div class="col-md-7">
+                                    <label id="moneyRemain"></label>
+                                     </div>
+									 </div>
+									 
+                               <div class="row">
+							   
+								 <div class="col-md-3">
+								 
+                                    <label>Enter Money</label>
+                                    </div>
+									 <div class="col-md-7">
+                                    <input id="amount" name="amount" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                                </div>
+                                     </div>
+									 
+                                <div class="input-group mb-3">
+                                    <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                        <button type="submit" class="btn btn-primary">Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+									</form>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			    <script>
+        $(function () {
+            $('#expire_date').datepicker();
+        });
+
+        function getlonetype(element)
+        {
+			info = {"userid" : element.value};
+		
+		$.ajax({
+              url: "getUsername",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+			  
+			  console.log(data);
+			  
+               document.getElementById('selected_user').innerHTML = data[0].u_name; 
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            }),
+		
+            //info = {"userid" : element.value};
+            $.ajax({
+              url: "getLoneType",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+                var loantype =  document.getElementById("loan_type")
+                loantype.innerHTML = "<option selected>Select</option>";
+                
+                for(var i in data)
+                {
+                    var option = document.createElement("option");
+                    option.innerHTML = data[i].loan_type;
+                    option.setAttribute("value",data[i].loan_type);
+                    loantype.appendChild(option);
+                }  
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            })
+        }
+
+        function getpayment_days(element)
+        {
+            info = {"loan_type" : $('#loan_type').children("option:selected").val(),"userid" : $('#username').children("option:selected").val()};
+            $.ajax({
+              url: "getLoanTitle",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+                var loan_title =  document.getElementById("loan_title")
+                loan_title.innerHTML = "<option selected>Select</option>";
+                console.log(data);
+                for(var i in data)
+                {
+                    var option = document.createElement("option");
+                    option.innerHTML = data[i].loan_title;
+                    option.setAttribute("value",data[i].loan_title);
+                    loan_title.appendChild(option);
+                }  
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            });
+        }
+
+        function moneyInfo(element)
+        {
+              info = {"loan_type" : $('#loan_type').children("option:selected").val(),"userid" : $('#username').children("option:selected").val() , "loan_title":element.value};
+            $.ajax({
+              url: "getMoneyInfo",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+               console.log(data);
+               $('#paidMoney').html(data.l_paied);
+                $('#moneyRemain').html(data.l_remain);
+
+
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            });
+        }
+    </script>
+		<% include partials/officerfooter.ejs %>	
+			

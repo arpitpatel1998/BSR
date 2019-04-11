@@ -1,0 +1,116 @@
+
+<% include partials/adminheader.ejs %>
+
+    <div class="row tm-content-row tm-mt-big">
+                <div class="col-lg-12">
+                  <form action="clientprofile" method="post" class="tm-edit-product-form">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+					
+                            <div class="col-md-7">
+                                <h2 class="tm-block-title d-inline-block">Client Profile report</h2>
+
+                            </div>
+                           
+                                <div class="input-group mb-4">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client ID
+                                    </label>
+									<select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" name="username" onchange="getlonetype(this)">
+                                        <option selected>Select</option>
+                                        <% userdata.forEach(function(user,index) { %>
+										
+                                        <option value="<%=user.u_id %>"> BSR<%=user.u_id%></option>
+										
+                                                                            <% }); %>
+                                    </select>
+                              
+								
+								  <button type="submit" class="btn btn-primary">Serach
+                                        </button>
+</div>         
+	<% if ( typeof clientprof != 'undefined') { %>
+
+    		<% if (clientprof.length > 0   ) {
+			
+			  clientprof.forEach((user, index) => { %>
+		
+
+                    <div class="row mt-5 tm-edit-product-row">
+                        <div class="col-xl-8 col-lg-8 col-md-8">
+                            <form action="" class="tm-edit-product-form">
+                              
+								<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client
+                                        Name
+                                    </label>
+                                    <input id="cheque_num" name="cheque_num" type="text"  value="<%=user.u_name%>"class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+									<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Cheque number
+                                        
+                                    </label>
+                                    <input id="cheque_num" name="cheque_num" type="text"  value="<%=user.cheque_num%>"class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+							
+								
+								<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Bank
+                                        Name
+                                    </label>
+                                    <input id="name" name="name" type="text"  value="<%=user.bank_name%>"class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+								<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">phone number
+                                      
+                                    </label>
+                                    <input id="name" name="name" type="text"  value="<%=user.mobile %>"class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+								<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password 
+                                      
+                                    </label>
+                                    <input id="name" name="name" type="text"  value="<%=user.u_pass %>"class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+								
+                                <div class="input-group mb-3">
+                                    <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Reference</label>
+                                    <textarea class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" rows="3" readonly><%=user.reference %></textarea>
+                                </div>
+                                                                <div class="input-group mb-3">
+                                    <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Address</label>
+                                    <textarea class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" rows="3" readonly><%=user.u_address %></textarea>
+                                </div>
+                               
+                               
+                                
+                            </form>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                            <div class="tm-product-img-dummy mx-auto" >
+                                <img style="width:200px; hieght:50px;" src="/assets/img/<%=user.adhar_proof %>">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+			</div>
+			<%})
+			}
+			}
+			%>
+        </div>
+		</form>
+		</div>
+		</div>
+		</div>
+	
+    <script>
+        $(function () {
+            $('#expire_date').datepicker();
+        });
+    </script>
+		
+<center>
+<% include partials/adminfooter.ejs %>
+</center>

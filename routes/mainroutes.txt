@@ -1,0 +1,14 @@
+//main routes of website 
+
+module.exports = {
+
+getoffuserlogin:(req,res)=> {
+	res.render('loginoff.ejs', {
+
+            title: "Welcome to BSR | Admin panal"
+
+        });
+	}
+}
+	
+	

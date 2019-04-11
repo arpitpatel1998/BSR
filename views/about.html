@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<% include partials/officerheader.ejs %>
+ <% if ( usertype == 1) { %>
+    <script>
+    window.location = "/admindashboard";
+</script>
+<%}else if( usertype == 2){%>
+<script>
+window.location = "/customer";
+   </script>
+<%}else if(usertype == 3)
+{%>
+    <script>
+window.location = "/officer";
+</script>
+
+<%}else{%>
+    <script>
+    //window.location = "/";
+    </script>
+<%}%>
+	<body>
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<h1 id="colorlib-logo"><a href="index.html">BSR</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li ><a href="/">Home</a></li>
+					<li><a href="product">Product</a></li>
+					<li><a href="loginpage">Login</a></li>
+					<li class="colorlib-active"><a href="about">About</a></li>
+					<li><a href="service">Services</a></li>
+					<li><a href="contact">Contact</a></li>
+				</ul>
+			</nav>
+
+	<div class="colorlib-footer">
+				<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |BSR
+				
+			</div>
+
+		</aside>
+
+		<div id="colorlib-main">
+
+			<div class="colorlib-about">
+				<div class="colorlib-narrow-content">
+					<div class="row row-bottom-padded-md">
+						<div class="col-md-6">
+							<div class="about-img animate-box" data-animate-effect="fadeInLeft" style="background-image: url(images/slider2.jpg);">
+							</div>
+						</div>
+						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="about-desc">
+								<span class="heading-meta">Welcome</span>
+								<h2 class="colorlib-heading">Who we are</h2>
+								<p>BAPA SITARAM ELECTROFIN PVT LTD is one of the fastest growing electronics and micro finance startup of GUJARAT, INDIA. It has presents in the market from the year 2014. Currently company is working on giving new digital era to the customer or viewer of LED TV. We have created almost the best thin TV in size to give you the best of BSR PRODUCTS Directors Call. Cost effective products which can give full satisfaction to the customer is company's strategy. Company wants to make every customer a loyal and a happy customer who can proud of purchasing a BSR product either its ELECTRONICS or FINANCE. </p>
+								<p>Right now we have lot more to prove. And we are working on it. As our logo describe we want to grow as a big tree under which lots of customers can grow their life... <B>-ASHISH SHAH</b> </p>
+							</div>
+							<div class="row padding">
+								<div class="col-md-4 no-gutters animate-box" data-animate-effect="fadeInLeft">
+									<a href="#" class="steps active">
+										<p class="icon"><span><i class="icon-check"></i></span></p>
+										<h3>We are <br>pasionate</h3>
+									</a>
+								</div>
+								<div class="col-md-4 no-gutters animate-box" data-animate-effect="fadeInLeft">
+									<a href="#" class="steps">
+										<p class="icon"><span><i class="icon-check"></i></span></p>
+										<h3>Honest <br>Dependable</h3>
+									</a>
+								</div>
+								<div class="col-md-4 no-gutters animate-box" data-animate-effect="fadeInLeft">
+									<a href="#" class="steps">
+										<p class="icon"><span><i class="icon-check"></i></span></p>
+										<h3>Always <br>Improving</h3>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+							<h2 class="colorlib-heading">Features</h2>
+							<p>BAPA SITARAM ELECTROFIN P. LTD J5R- lets future bright From the manufacturer : Manufacturer of "BSR" brand SMART Led TV One of the fastest growing Micro-Finance company of Gujarat 0 7777 9797 23 / 0 7777 9797 25 bapasitaramefltd@gmail.com Grade FHD Pane/ The grade FHD panel meets the highest industry requirement ensuring clear, detailed and rich picture quality. Enjoy a next level viewing experience with FHD. Micro Dimming Micro dimming analyses the TV content in hundreds of separate zones, adjusting the brightness and darkness separately. This technology ensures a fantastic viewing experience with great contrast and vivid picture quality. True Color The latest generation of BSR LED HD backlight is a milestone in LED HD backlight technology. Its white LED HD backlight dramatically enhances the color gamut and provides a dynamic contrast. You will feel the difference in BLACK COLOR as it's the magic created by BSR in black color</p>
+						</div>
+						<div class="col-md-8 animate-box" data-animate-effect="fadeInRight">
+							<div class="fancy-collapse-panel">
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingOne">
+									        <h4 class="panel-title">
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Why choose US?
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+									         <div class="panel-body">
+									            <div class="row">
+										      		<div class="col-md-6">
+										      			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+										      		</div>
+										      	</div>
+									         </div>
+									    </div>
+									</div>
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingTwo">
+									        <h4 class="panel-title">
+									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What We do?
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									        <div class="panel-body">
+									            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+													<ul>
+														<li>Separated they live in Bookmarksgrove right</li>
+														<li>Separated they live in Bookmarksgrove right</li>
+													</ul>
+									        </div>
+									    </div>
+									</div>
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingThree">
+									        <h4 class="panel-title">
+									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Our Specialties
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+									        <div class="panel-body">
+									            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>	
+									        </div>
+									    </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="colorlib-narrow-content">
+					<div class="row">
+					</div>
+					<div class="row">
+						<div class="col-md-3 text-center animate-box">
+							<span class="icon"><i class="flaticon-skyline"></i></span>
+							<span class="colorlib-counter js-counter" data-from="0" data-to="1800" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Active loan</span>
+						</div>
+						<div class="col-md-3 text-center animate-box">
+							<span class="icon"><i class="flaticon-engineer"></i></span>
+							<span class="colorlib-counter js-counter" data-from="0" data-to="11" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Offilcers</span>
+						</div>
+						<div class="col-md-3 text-center animate-box">
+							<span class="icon"><i class="flaticon-architect-with-helmet"></i></span>
+							<span class="colorlib-counter js-counter" data-from="0" data-to="1400" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Happy Clients</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Sticky Kit -->
+	<script src="js/sticky-kit.min.js"></script>
+	<!-- Owl carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+	
+	
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+

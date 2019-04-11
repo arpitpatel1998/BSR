@@ -1,0 +1,206 @@
+<% include partials/adminheader.ejs %>
+
+      <!-- row -->
+      <% if ( typeof message != 'undefined') { %>
+
+         <script>alert('<%= message %>');</script>
+        <% } %>
+
+        <div class="row tm-mt-big">
+            <div class="col-lg-12">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Add Collection</h2>
+                        </div>
+                    </div>
+                    <div class="row mt-4 tm-edit-product-row">
+                        <div class="col-xl-7 col-lg-7 col-md-12">
+                            <form action="addcollection" method="post"class="tm-edit-product-form">
+                                <div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client
+                                        ID
+                                    </label>
+                                     <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" name="username" onchange="getlonetype(this)">
+                                        <option selected>Select</option>
+                                        <% userdata.forEach(function(user,index) { %>
+                                        <option value="<%=user.u_id %> name="<%user.u_name%>"> BSR<%=user.u_id%></option>
+
+                                                                            <% }); %>
+                                    </select>
+                                    
+                                </div>
+								
+                                       <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" >Client Name</label>
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="selected_user"></label>
+                                   
+                                
+                                     </div>
+                             
+								
+                                <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Loan type</label>
+                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="loan_type" name="loan_type" onchange="getpayment_days(this)">
+                                       <option selected>Select</option>
+                                       
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="loan_title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Loan Title</label>
+                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="loan_title" name="loan_title" onchange="moneyInfo(this)">
+                                        <option selected>Select</option>
+                                    </select>
+                                </div>
+                                  <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" >Paid Money</label>
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="paidMoney"></label>
+                                   
+                                
+                                     </div>
+                                       <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" >Money Remain</label>
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="moneyRemain"></label>
+                                   
+                                
+                                     </div>
+                                <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Enter Money</label>
+                                    
+                                    <input id="amount" name="amount" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" required> 
+                                
+                                     </div>
+                               
+                                
+                               
+                                <div class="input-group mb-3">
+                                    <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                        <button type="submit" class="btn btn-primary">Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div> 
+		</div>
+		</div>
+		</div>
+		
+        <script>
+		
+        function getlonetype(element)
+        {
+		
+		info = {"userid" : element.value};
+		
+		$.ajax({
+              url: "getUsername",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+			  
+			  console.log(data);
+			  
+               document.getElementById('selected_user').innerHTML = data[0].u_name; 
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            }),
+		
+            $.ajax({
+              url: "getLoneType",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+                var loantype =  document.getElementById("loan_type")
+                loantype.innerHTML = "<option selected>Select</option>";
+                
+                for(var i in data)
+                {
+                    var option = document.createElement("option");
+                    option.innerHTML = data[i].loan_type;
+                    option.setAttribute("value",data[i].loan_type);
+                    loantype.appendChild(option);
+                }  
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            })
+        }
+
+        function getpayment_days(element)
+        {
+            info = {"loan_type" : $('#loan_type').children("option:selected").val(),"userid" : $('#username').children("option:selected").val()};
+            $.ajax({
+              url: "getLoanTitle",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+                var loan_title =  document.getElementById("loan_title")
+                loan_title.innerHTML = "<option selected>Select</option>";
+                console.log(data);
+                for(var i in data)
+                {
+                    var option = document.createElement("option");
+                    option.innerHTML = data[i].loan_title;
+                    option.setAttribute("value",data[i].loan_title);
+                    loan_title.appendChild(option);
+                }  
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            });
+        }
+
+        function moneyInfo(element)
+        {
+              info = {"loan_type" : $('#loan_type').children("option:selected").val(),"userid" : $('#username').children("option:selected").val() , "loan_title":element.value};
+            $.ajax({
+              url: "getMoneyInfo",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+               console.log(data);
+               $('#paidMoney').html(data.l_paied);
+                $('#moneyRemain').html(data.l_remain);
+
+
+            },
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            });
+        }
+    </script>
+	</div>
+	</div>
+	
+	</div>
+		<center>
+		<% include partials/adminfooter.ejs %>
+		</center>
+		

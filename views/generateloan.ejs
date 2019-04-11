@@ -1,0 +1,148 @@
+
+<% include partials/adminheader.ejs %>
+
+
+        <!-- row -->
+        <div class="row tm-mt-big">
+           <div class="col-lg-12">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Generate Loan</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 tm-edit-product-row">
+                        <div class="col-xl-7 col-lg-7 col-md-12">
+                            <form action="generateloan" method="post" class="tm-edit-product-form">
+         
+                              <div class="input-group mb-3">
+                                    <label for="Install_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client-id
+                                    </label>
+                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="c_id" name="c_id" onchange="getname(this)" required>
+                                        <option selected>Select</option>
+                                        <% userdata.forEach(function(user,index) { %>
+                                        <option value="<%=user.u_id %>"> BSR<%=user.u_id%> </option>
+													<% }); %>
+                                    </select>
+                                   
+                                </div>
+
+						<div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" >Client Name</label>
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="selected_user"></label>
+                                           
+                                     </div>
+         <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Payment type</label>
+                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="payment_type" name="payment_type" required>
+                                   
+                                        <option value="daily">Daily</option>
+										  <option value="weekly">weekly</option>
+                                        <option value="Fortnight">Fortnight</option>
+                                       <option value="Monthly">Monthly</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="input-group mb-3">
+                                    <label for="Install_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Amount
+                                    </label>
+                                    <input id="Amount" name="Amount" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true" required>
+                                </div>
+                              
+							  <div class="input-group mb-3">
+                                    <label for="Install_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"> Payment Term
+                                    </label>
+                                    <input id="laon_type" name="laon_type" type="number" title="hafto" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true" required>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Loan 
+                                        Date
+                                    </label>
+                                    <input id="Loan_date" name="Loan_date" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true" required>
+                                </div>
+                              <div class="input-group mb-3">
+                                    <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Due
+                                        Date
+                                    </label>
+                                    <input id="Due_date" name="Due_date" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true" required>
+                                </div>
+                              <div class="input-group mb-3">
+                                    <label for="Install_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Installment Date
+                                    </label>
+                                    <input id="Install_date" name="Install_date" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true" required>
+                                </div>
+								<div class="input-group mb-3">
+                                    <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                        <button type="submit" class="btn btn-primary">Add
+                                        </button>
+                                    </div>
+                                </div>
+								
+						</form>
+                        </div>
+                       
+                    </div>
+                </div>
+      
+        </div>
+   
+   
+    <script>
+	function getname(element){
+		
+		info = {"userid" : element.value};
+		
+		$.ajax({
+              url: "getUsername",
+              method : 'post',
+              dataType:'JSON',
+              data : info,
+              success: function(data){
+			  
+			  console.log(data);
+			  
+               document.getElementById('selected_user').innerHTML = data[0].u_name; 
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            })
+	}	
+	
+	
+        $(function () {
+            $('#Loan_date').datepicker();
+        });
+    </script>
+	<script>
+        $(function () {
+            $('#Install_date').datepicker();
+        });
+    </script>
+	<script>
+        $(function () {
+            $('#Due_date').datepicker();
+        });
+    </script>
+    </div>
+</div>
+		<center>
+		<% include partials/adminfooter.ejs %>
+		</center>
+	
+</body>
+
+
+		

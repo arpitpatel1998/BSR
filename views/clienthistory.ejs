@@ -1,0 +1,140 @@
+    
+
+<% include partials/adminheader.ejs %>
+
+    <div class="row tm-content-row tm-mt-big">
+                <div class="col-lg-12">
+                  <form action="clienthistory" method="post" class="tm-edit-product-form">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+					
+                            <div class="col-md-7">
+                                <h2 class="tm-block-title d-inline-block">Client history report</h2>
+
+                            </div>
+                           
+                                <div class="input-group mb-4">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client ID
+                                    </label>
+									<select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" name="username" onchange="getlonetype(this)">
+                                        <option selected>Select</option>
+                                        <% userdata.forEach(function(user,index) { %>
+                                        <option value="<%=user.u_id %>"> BSR<%=user.u_id%></option>
+										
+                                                                            <% }); %>
+                                    </select>
+                              
+								
+								  <button type="submit" class="btn btn-primary">Serach
+                                        </button>
+                                   
+                                 </div>	
+		<% if ( typeof clienthis != 'undefined') { %>
+
+    		<% if (clienthis.length > 0   ) { %>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col">client id</th>
+                                        <th scope="col">Client Name</th>
+                                        <th scope="col" class="text-center">Loan tyoe</th>
+                                        <th scope="col" class="text-center">Loan title</th>
+                                        <th scope="col">Loan amount</th>
+                                        <th scope="col">Mobile NO </th>
+                                        <th scope="col">Installment</th>
+                                        <th scope="col">Loan Date</th>
+							
+                                        <th scope="col">Due date</th>
+										<th scope="col"> Installment date</th>
+										<th scope="col">Remain Amount</th>
+										<th scope="col">Paid Amount</th>
+										<th scope="col">Active Loan</th>
+										<th scope="col">Compelte Loan</th>
+										
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                       <% clienthis.forEach((clients, index) => { %>
+									<tr>
+									
+                                       
+                                        <td class="tm-product-name">BSR<%= clients.u_id %></td>
+										
+                                        <td class="text-center"><%= clients.u_name %></td>
+                                        <td class="text-center"><%= clients.loan_type %></td>
+                                        <td class="text-center"><%= clients.loan_title %></td>
+                                        <td class="text-center"><%= clients.loan_amount %></td>
+                                        <td class="text-center"><%= clients.mobile %></td>
+                                        <td class="text-center"><%= clients.payment_type %></td>
+                                        <td class="text-center"><%  
+											intstall_date=clients.loan_date
+										newintstall_date = [(intstall_date.getFullYear()),
+													intstall_date.getMonth() + 1, intstall_date.getDate()
+												].join('-') + ' ' + [intstall_date.getHours(),
+													intstall_date.getMinutes(),
+													intstall_date.getSeconds()
+													].join(':');%>
+													<%=
+									newintstall_date%>
+									</td>
+                                        <td class="text-center">  <%	intstall_date=clients.duedate
+										newintstall_date = [(intstall_date.getFullYear()),
+													intstall_date.getMonth() + 1, intstall_date.getDate()
+												].join('-') + ' ' + [intstall_date.getHours(),
+													intstall_date.getMinutes(),
+													intstall_date.getSeconds()
+													].join(':');%>
+													<%=
+									newintstall_date%></td>
+                                        <td class="text-center"><% intstall_date=clients.install_date 
+										newintstall_date = [(intstall_date.getFullYear()),
+													intstall_date.getMonth() + 1, intstall_date.getDate()
+												].join('-') + ' ' + [intstall_date.getHours(),
+													intstall_date.getMinutes(),
+													intstall_date.getSeconds()
+													].join(':');%>
+													<%=
+									newintstall_date%></td>
+                                        <td class="text-center"><%= clients.l_remain %></td>
+                                        <td class="text-center"><%= clients.l_paied %></td>
+                                        <td class="text-center"><% if(clients.is_active == 1){
+											%> Yes <% } else {%> No <%} %></td> 
+                                        <td class="text-center"><% if(clients.is_complete == 1){
+											%> Yes <% } else {%> No <%} %></td>
+                                       
+                                        
+                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                      
+                    </div>
+                </div>
+            </div>
+            </form>
+			<%}
+			
+			else { %>
+			
+            <p class="text-center">No Loan generated found </p>
+        <% }
+		}
+		else {%>
+		 <p class="text-center">No data generated </p>
+		<%}
+		%>		 
+								 
+                        </div>
+                        </div>
+						</form>
+						</div>
+						</div>
+						</div>
+		
+		<center>
+       <%include partials/adminfooter.ejs %></center>

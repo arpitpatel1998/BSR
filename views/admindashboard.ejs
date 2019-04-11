@@ -1,0 +1,204 @@
+<% include partials/adminheader.ejs %>
+
+
+         <!-- row -->
+            <div class="row tm-content-row tm-mt-big">
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <center><h2 class="tm-block-title" > Todays Collection</h2><h2 class="tm-block-title" id="dailydata"></h2></center>
+							
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <center><h2 class="tm-block-title" > Monthly Collection</h2><h2 class="tm-block-title" id="monthlydata"></h2></center>
+                        
+                    </div>
+                </div>
+                
+<!-- 
+client top name 
+
+-->
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+                            <div class="col-8">
+                                <h2 class="tm-block-title d-inline-block">Top Customer List</h2>
+
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="#" class="tm-link-black">View All</a>
+                            </div>
+                        </div>
+                        <ol id="high" class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                         
+                        </ol>
+                    </div>
+                </div>
+               <div class="col-xl-6 col-lg-6 tm-md-6 tm-sm-6 tm-col">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+                            <canvas id="myChart" >
+							
+							</canvas>
+                        
+							
+                        </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+	 <script src="js/moment.min.js"></script>
+	  <script src="js/Chart.min.js"></script>	
+
+	<script>
+	  
+	 function getdashboard()
+        {
+	
+		$.ajax({
+              url: "getdashboarddaily",
+              method : 'post',
+              dataType:'JSON',
+              data : 0,
+              success: function(data){
+			  
+			  console.log(data);
+			  
+               document.getElementById('dailydata').innerHTML = data; 
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            }),
+			
+			$.ajax({
+              url: "getdashboardmonth",
+              method : 'post',
+              dataType:'JSON',
+              data : 0,
+              success: function(data){
+			  
+			  console.log(data);
+			  
+               document.getElementById('monthlydata').innerHTML = data; 
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            }),
+		
+			$.ajax({
+              url: "getclienttop",
+              method : 'post',
+              dataType:'JSON',
+              data : 0,
+              success: function(data){
+			 console.log(data);
+    
+
+       var timeFormat = 'YYYY/MM/DD';
+
+    var config = {
+        type:    'line',
+        data:    {
+            datasets: [
+                {
+                    label: "BSR Collection",
+                    data:data,
+                    fill: false,
+                    borderColor: 'red'
+                },
+               
+            ]
+        },
+        options: {
+            responsive: true,
+            title:      {
+                display: true,
+                text:    "Chart.js Time Scale"
+            },
+            scales:     {
+                xAxes: [{
+                    type:       "time",
+                    time:       {
+                        format: timeFormat,
+                        tooltipFormat: 'll'
+                    },
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'value'
+                    }
+                }]
+            }
+        }
+    };
+	var ctx = document.getElementById("myChart").getContext("2d");
+        window.myLine = new Chart(ctx, config);
+    },
+			
+            
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            }),
+			
+		$.ajax({
+              url: "getmonthly",
+              method : 'post',
+              dataType:'JSON',
+              data : 0,
+              success: function(result){
+			  
+			   console.log("came");
+				var data = result,
+				
+				$ulSub = $("#high"); // cache your Ul id here
+				console.log("here"+data);
+					$.each(data, function (i, item) {
+					
+				$ulSub.append(
+						'<li class="tm-list-group-item"> '+ item.u_name + '</li>');
+      });
+    
+		 console.log("hete data is "+data[0].high);
+			  console.log("hete data is "+data[0].u_name);
+			  
+            },
+			
+              fail:function(){
+                console.log("fail");
+              },
+              always : function (){
+                console.log("always");
+              }
+            })
+			
+			}
+	
+	</script>
+	<center>
+   <% include partials/adminfooter.ejs %></center>

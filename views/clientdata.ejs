@@ -1,0 +1,65 @@
+
+<% include partials/adminheader.ejs %>
+
+    <div class="row tm-content-row tm-mt-big">
+                <div class="col-lg-12">
+                  <form action="showclientdetails" method="post" class="tm-edit-product-form">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+					
+                            <div class="col-md-7">
+                                <h2 class="tm-block-title d-inline-block">Client Data</h2>
+
+                            </div>
+                           
+                                <div class="input-group mb-4">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client Phone
+                                    </label>
+							         <input id="phone" name="phone" type="text" class="form-control validate col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                        <button type="submit" class="btn btn-primary">Serach
+                                        </button>
+                            </div>  
+            </div>   
+                        
+                        
+	<% if ( typeof userdata != 'undefined') { %>
+
+    		<% if (userdata.length > 0   ) {
+			
+			%>
+
+                    <div class="row mt-5 tm-edit-product-row">
+                        <div class="col-xl-8 col-lg-8 col-md-8">
+                            <form action="" class="tm-edit-product-form">
+                              
+								<div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Client
+                                        Password
+                                    </label>
+                                    <input id="cheque_num" name="cheque_num" type="text"  value="<%=userdata[0].u_pass%> "class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" readonly>
+                                </div>
+								
+                            </form>
+            
+            
+			</div>
+                        </div>
+			<%}
+			}
+			
+			%>
+        </div>
+		</form>
+		</div>
+		</div>
+	
+	
+    <script>
+        $(function () {
+            $('#expire_date').datepicker();
+        });
+    </script>
+		
+<center>
+<% include partials/adminfooter.ejs %>
+</center>

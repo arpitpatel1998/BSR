@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+	<% include partials/officerheader.ejs %>
+	<% include partials/officer_session.ejs %>
+ 
+ <% if ( usertype == 1) { %>
+    <script>
+    window.location = "/admindashboard";
+</script>
+<%}else if( usertype == 2){%>
+<script>
+window.location = "/customer";
+   </script>
+<%}else if(usertype == 3)
+{%>
+    <script>
+window.location = "/officer";
+</script>
+
+<%}else{%>
+    <script>
+    //window.location = "/";
+    </script>
+<%}%>
+	<body>
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<h1 id="colorlib-logo"><a href="index.html">BSR</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li ><a href="/">Home</a></li>
+			<li ><a href="product">Product</a></li>
+					<li><a href="loginpage">Login</a></li>
+					<li><a href="about">About</a></li>
+					<li class="colorlib-active"><a href="service">Services</a></li>
+					<li><a href="contact">Contact</a></li>
+				</ul>
+			</nav>
+
+			<div class="colorlib-footer">
+				<div class="colorlib-footer">
+				<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Portal is made BY Shaunak pathak and kush joshi contatct us (psshaunak1998@gmail.com)</small></p>
+				
+			</div>
+		
+			</div>
+
+		</aside>
+
+		<div id="colorlib-main">
+			<div class="colorlib-services">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Services</span>
+							<h2 class="colorlib-heading">Here are some of our expertise</h2>
+						</div>
+					</div>
+					<div class="row row-bottom-padded-md">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-worker"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>Micro Finance</h3>
+											<p>Micro Finance is a category of financial services targeted at individuals and small businesses that lacks access to conventional banking and banking related services due to mainly their business modules. 
+Micro Finance includes micro credit to the small business owners who mainly do their most of business in cash. Small shop owners, retailors, rickshaw – auto owners, food business are most common in the zone. Mainly MICRO FINANCE had a limited definition – the provision of microloan to poor entrepreneurs and small businesses lacking money due to over credit or cash business module. This module attracts customers by *) relationship based customers *) reference based customers *) group of customers. 
+For BSR Group micro finance is a way to give economic development, employment and support to micro entrepreneurs and small businesses. By doing this company is supporting the country to grow its economy as well as company makes its roots strong and firm its presents in the market.
+This business module attracts more return on investment then bank and other business module. The simple reason behind the higher ROI is we are lending to those business which are not eligible for loan from bank point of view. Currently Gujarat has more than 10,000 non register financer or lenders who are charging more than 8 to 10% interest per month. Against that company give them loans on their demand. Easy repayment module, and the most important – LOWER INTEREST RATES. Normally banks give loan for 2/3/5 or more years where this small business needs small money on regular basis mainly in interval of 2/3/4/6 months. This is where company takes the lead in offering the facilities to customers. Company lends money on their needs and what they need.</p>
+										</div>
+									</div>
+
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-sketch"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>Project Finance</h3>
+											<p>Electric equipment and Electronics industry contributes over 7% of GDP which is projected to increase to about 19% in next 5 years according to a study by FORST & SULLIVAN. 
+One of the best markets to enter is electronics as this zone have a vast market and customer loves to be with the current market or rather to say with current technology. Mostly customers change their mobiles, tv sets, computers, washings machines every 3 to 5 years’ time span. LED TV is the thing which can be sold to a customer just by giving them what they want to see at their home… a theater like experience. It is one the best market which can be covered easily by giving good quality product and on time services. A company can cover market by mouth publicity. When customer starts selling our product it’s an easier task for any company to get stable in the market. This is what we think and want to act in electronics division. 
+We have decided to enter in LED and SMART LED TV range with a quality display, super sound and a good refresh rate which gives a smooth quality and joy to watch. Initially Company plan to import parts from different manufacturer based at china and assemble at own assembling line based at Bagdana, Gujarat. Register office and base of the company is at Ahmedabad, Gujarat. </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+				</div>
+			</div>
+
+		
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Sticky Kit -->
+	<script src="js/sticky-kit.min.js"></script>
+	<!-- Owl carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+	
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+

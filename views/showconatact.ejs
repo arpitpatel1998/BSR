@@ -1,0 +1,65 @@
+<% include partials/adminheader.ejs %>
+
+         <!-- row -->
+            <div class="row tm-content-row tm-mt-big">
+                <div class=" col-lg-12  ">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+                                <h2 class="tm-block-title d-inline-block">Contact Request</h2>
+
+                            </div>
+                           
+                        </div>
+						                                    <% if ( typeof allcontact != 'undefined') { %>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                               <thead>
+                                    <tr class="tm-bg-gray">
+                                       
+                                        <th scope="col">Name</th>
+                                        <th scope="col" >Email</th>
+                                        <th scope="col">Phone number</th>
+                                        <th scope="col">Message</th>
+                                      
+										
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+
+    		<% if (allcontact.length > 0) { %>
+        <% allcontact.forEach((row, index) => { %>
+									<tr>
+									
+                                        <td class="text-center"><%= row.con_name%></td>
+                                        <td class="text-center"><%= row.con_email%></td>
+										<td class="text-center"><%= row.con_phone%></td>
+                                        <td class="text-center"><%= row.con_mes %></td>
+									
+                                    </tr>
+                                       <% }) %>
+                                </tbody>
+                            </table>
+                        </div> 
+                                  </div>
+                </div>
+<%}
+			
+			else { %>
+		
+            <p class="text-center">No data Collected today </p>
+        <% }
+	
+	}
+		
+		else {%>
+		 <p class="text-center">No data Collected todays </p>
+		<%}
+		
+		%>	
+</div>
+<center>
+   <% include partials/adminfooter.ejs %>
+   </center>

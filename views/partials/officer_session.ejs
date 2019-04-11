@@ -1,0 +1,20 @@
+ <% if (  usertype == 1) { %>
+    <script>
+    window.location = "/admindashboard";
+</script>
+<%}else if( usertype == 2){%>
+<script>
+window.location = "/customer";
+   </script>
+<%}else if(usertype == 3){%>
+    <script>
+</script>
+<%}else if(usertype == 'undefined'){%>
+    <script>
+window.location = "/";
+</script>
+<%}else{%>
+    <script>
+    window.location = "/";
+    </script>
+<%}%>

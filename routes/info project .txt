@@ -1,0 +1,33 @@
+project info :
+
+partials/adminfooter: footer and scripts
+partials/admin header:header menu and css
+
+router function 
+
+gethomepage: login and home page function error mokle 6 
+
+getdashboarddata: get request for dashboared run nai thatu function 
+
+ 
+add client:error u_id undefine for clientaddd by admin error({"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry '' for key 'PRIMARY'","sqlState":"23000","index":0,
+"sql":"INSERT INTO `userinfo` (u_id, u_name, u_pass,u_type,cheque_num,reference,adhar_proof,bank_name,mobile) VALUES ('', 'pan', 'undefined', '2','54','5daad3443','pan.jpeg','xfgdgddr', '466686')"})
+ 
+
+addcollection: collection by admin 
+
+generateloan:generate by admin
+
+dailyreport : okay only rendering remain 
+
+ monthlyreport: okay onliy render got error 
+ 
+ createofficerpage: okay 
+ 
+ 
+ clienthistory: okay only render remain
+
+ clientprofile : logic and rendering remain
+ 
+ 
+ 

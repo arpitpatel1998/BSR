@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <% if (  usertype == 1) { %>
+    <script>
+   window.location = "/admindashboard";
+</script>
+<%}else if( usertype == 2){%>
+<script>
+window.location = "/customer";
+   </script>
+
+<%}else if(usertype == 3){%>
+    <script>
+window.location = "/officer";
+</script>
+<%}else if(usertype == 'undefined'){%>
+    <script>
+window.location = "/";
+</script>
+<%}else{%>
+    <script>
+    //window.location = "/";
+    </script>
+<%}%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BSR - ADMIN Portal</title>
+  
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href="./css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="./jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <!-- http://api.jqueryui.com/datepicker/ -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="./css/tooplate.css">
+		<link rel="shortcut icon" href="img/favicon.ico">
+
+</head>
+<body>
+
+
+
+
+<body class="bg03">
+
+<% if ( typeof message != 'undefined') { %>
+         <script>alert('<%= message %>');</script>
+        <% } %>
+    <div class="container">
+        <div class="row tm-mt-big">
+            <div class="col-12 mx-auto tm-login-col">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                           <center> <img src="images/logo.jpg"></center>
+                            <h2 class="tm-block-title mt-3">Login</h2>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <form action="" method="post" class="tm-login-form" onsubmit="validate();">
+                                <div class="input-group">
+                                    <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
+                                    <input name="username" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" value="admin" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password</label>
+                                    <input name="password" type="password" class="form-control validate" id="password" value="1234" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <button type="submit" class="btn btn-primary d-inline-block mx-auto">Login</button>
+                                </div>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
